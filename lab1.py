@@ -1,21 +1,18 @@
 from math import e
+import numpy as np
 
 print('Lab #1')
 
 number_of_inputs = int(input('Enter number of inputs: '))
 alpha = float(input('Enter alpha: '))
-signals = [] # list of signals and multipliers
+x = np.array([]) # list of signals
+w = np.array([]) # list of multipliers
 
 # filling values of signals and multipliers
 for i in range(number_of_inputs):
-    x = float(input(f'Enter x{i}: '))
-    w = float(input(f'Enter w{i}: '))
-    signals.append((x, w))
+    x = np.append(x, float(input(f'Enter x{i}: ')))
+    w = np.append(w, float(input(f'Enter w{i}: ')))
 
-sum_of_signals = 0
-for x, w in signals:
-    sum_of_signals += x * w
-
-y = 1 / (1 + e ** (- alpha * sum_of_signals))
+y = 1 / (1 + e ** (- alpha * sum(x * w)))
 
 print(f' y = {y}')
