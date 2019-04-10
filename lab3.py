@@ -10,6 +10,7 @@ i = 1
 
 w = [[0.1, 0.1, 0.1, 0.1]]
 y = []
+deltas = []
 
 def get_sum_of_x(x, w):
     return sum([elem * w[index] for index, elem in enumerate(x) ])
@@ -25,6 +26,7 @@ while True:
     sum_of_x = get_sum_of_x(x, w[i - 1])
     current_y = calculate_y(sum_of_x)
     current_delta = calculate_delta(current_y)
+    deltas.append(current_delta)
 
     if current_delta <= permissible_delta:
         break
@@ -33,10 +35,10 @@ while True:
         delta_w = [elem * current_sigma for elem in x]
         current_w = [ round(w[i - 1][index] + elem, 3) for index, elem in enumerate(delta_w) ]
         w.append(current_w)
-        i += 1
-
+        i += 1 
+ 
 results_dict = {
-    'w': w,
+    'delta': deltas,
     'y': y
 }
 
