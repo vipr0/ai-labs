@@ -13,6 +13,7 @@ for i in range(number_of_inputs):
     x = np.append(x, float(input(f'Enter x{i}: ')))
     w = np.append(w, float(input(f'Enter w{i}: ')))
 
-y = 1 / (1 + e ** (- alpha * sum(x * w)))
+# y = 1 / (1 + e ** (- alpha * np.dot(x, w)))
+y = 1 / (1 + np.exp(-alpha * np.dot(x, w)))
 
 print(f' y = {y}')
